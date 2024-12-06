@@ -1,0 +1,215 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    background: #f4f6f9;
+    margin: 0;
+}
+
+/* Portal Container */
+.portal-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Cabeçalho */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #139393;
+    color: white;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header .logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.header-menu a {
+    margin: 0 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.header-menu a:hover {
+    text-decoration: underline;
+}
+
+/* Conteúdo Principal */
+.main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 220px;
+    background: #0f6e6e;
+    color: white;
+    padding: 20px 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar .menu li {
+    margin-bottom: 15px;
+}
+
+.sidebar .menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.sidebar .menu a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Ícones do Menu */
+.sidebar .menu i {
+    font-size: 18px;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.content h1 {
+    font-size: 24px;
+    color: #139393;
+    margin-bottom: 10px;
+}
+
+.content p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #f4f6f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card i {
+    font-size: 30px;
+    color: #139393;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.card .view-report {
+    background: #139393;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.card .view-report:hover {
+    background: #0f6e6e;
+}
+
+/* Iframe Container */
+.iframe-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 40px);
+    padding: 20px;
+    background: #f4f6f9;
+}
+
+.iframe-container iframe {
+    width: 100%;
+    height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.back-button {
+    margin-bottom: 10px;
+    background: #139393;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.back-button:hover {
+    background: #0f6e6e;
+}
+
+/* Rodapé */
+.footer {
+    background: #f4f6f9;
+    color: #333;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+}

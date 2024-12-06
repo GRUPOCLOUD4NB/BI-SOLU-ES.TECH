@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<head>
+    <title>Relatórios BI SOLUÇÕES</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="single is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Header -->
+        <header id="header">
+            <h1>
+                <a href="single.html">
+                    <img src="https://github.com/GRUPOCLOUD4NB/IMAGENSBI/blob/main/LogoCabe%C3%A7alho_FundoBranco.png?raw=true" style="width: 90px;">
+                </a>
+            </h1>
+            <nav class="links">
+                <ul>
+                    <li><a href="#">Relatórios</a></li>
+                    <li><a href="#">Tarefas</a></li>
+                    <li><a href="#">Configurações</a></li>
+                    <li><a href="#">Perfil</a></li>
+                </ul>
+            </nav>
+            <nav class="main">
+                <ul>
+                    <li class="search">
+                        <a class="fa-search" href="#search">Search</a>
+                        <form id="search" method="get" action="#">
+                            <input type="text" name="query" placeholder="Search" />
+                        </form>
+                    </li>
+                    <li class="menu">
+                        <a class="fa-bars" href="#menu">Menu</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Menu -->
+        <section id="menu">
+            <section>
+                <form class="search" method="get" action="#">
+                    <input type="text" name="query" placeholder="Search" />
+                </form>
+            </section>
+            <section>
+                <ul class="links">
+                    <li>
+                        <a href="#">
+                            <h3>Relatórios Financeiros</h3>
+                            <p>Análises detalhadas para uma gestão financeira eficiente e estratégica.</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <h3>Contabilidade</h3>
+                            <p>Controle contábil preciso para garantir conformidade e tomar decisões fundamentadas.</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <h3>Comercial - Vendas</h3>
+                            <p>Acompanhamento das vendas em tempo real para otimizar estratégias comerciais e maximizar resultados.</p>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </section>
+
+        <!-- Main -->
+        <div id="main">
+            <article class="post">
+                <header>
+                    <div class="title">
+                        <h2><a href="#">RELATÓRIOS</a></h2>
+                        <p>O poder da análise está em transformar números em decisões.</p>
+                    </div>
+                    <div class="meta">
+                        <time class="published" id="current-date"></time>
+                        <script>
+                            const dateElement = document.getElementById('current-date');
+                            const today = new Date();
+                            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                            dateElement.textContent = today.toLocaleDateString('pt-BR', options);
+                            dateElement.setAttribute('datetime', today.toISOString().split('T')[0]);
+                        </script>
+                        <a href="#" class="author">
+                            <span class="name" id="user-name">Usuário</span>
+                            <img src="images/avatar.jpg" alt="Avatar" />
+                        </a>
+                        <script>
+                            // Exemplo: Atualizando o nome do usuário e avatar dinamicamente
+                            const user = { name: "Allyf Linek", avatar: "images/avatar.jpg" };
+                            document.getElementById("user-name").textContent = user.name;
+                            document.querySelector(".author img").src = user.avatar;
+                            document.querySelector(".author img").alt = `Avatar de ${user.name}`;
+                        </script>
+                    </div>
+                </header>
+                <div>
+                    <iframe 
+                        width="100%" 
+                        height="680" 
+                        src="https://app.powerbi.com/view?r=eyJrIjoiOWIzNGQ0YmEtNjY3OS00YmIyLWJlN2MtMGNiYzAyMWY2Mzg3IiwidCI6IjgxODAwYWI5LTc0ZDItNGViYy1hOTMwLTM4YjgwZjRlNzIzMiJ9" 
+                        frameborder="0" 
+                        allowFullScreen="true">
+                    </iframe>
+                </div>
+            </article>
+        </div>
+
+        <section id="footer">
+            <ul class="icons">
+                <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+            </ul>
+            <p class="copyright">&copy; BI Soluções 2024. Todos os Direitos Reservados.</p>
+        </section>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+
+        // Configurações do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBTaKdJDxa_z8i0isR0Eijp0PSRRfG6CAU",
+            authDomain: "bi-solucoes.firebaseapp.com",
+            projectId: "bi-solucoes",
+            storageBucket: "bi-solucoes.firebasestorage.app",
+            messagingSenderId: "761304787557",
+            appId: "1:761304787557:web:f4ff7f285ffb5792bab48c",
+            measurementId: "G-6DNLBKCWXB"
+        };
+
+        // Inicializa o Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Verifica o estado de autenticação
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                alert("Você precisa fazer login para acessar esta página.");
+                window.location.href = "PortalAutenticador.html";
+            } else {
+                console.log("Usuário autenticado:", user.uid);
+            }
+        });
+    </script>
+</body>
+</html>

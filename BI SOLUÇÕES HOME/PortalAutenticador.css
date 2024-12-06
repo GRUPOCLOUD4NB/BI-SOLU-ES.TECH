@@ -1,0 +1,270 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Corpo da página */
+body {
+    background: linear-gradient(135deg, #51a083, #A0D6D1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Para evitar barra de rolagem */
+    position: relative; /* Para posicionamento dos elementos decorativos */
+}
+
+.background-decor {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    z-index: -1;
+    animation: float 6s infinite ease-in-out alternate;
+}
+
+.background-decor2 {
+    position: absolute;
+    bottom: -80px;
+    right: -60px;
+    width: 250px;
+    height: 250px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    z-index: -1;
+    animation: float 8s infinite ease-in-out alternate-reverse;
+}
+
+
+
+/* Faixa 1 */
+.background-stripe1 {
+    position: absolute;
+    top: -100px;
+    left: -75px;
+    width: 150%;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    transform: rotate(-15deg);
+    animation: moveStripe 8s linear infinite;
+}
+ 
+/* Faixa 3 */
+.background-stripe3 {
+    position: absolute;
+    bottom: -100px;
+    right: -50px;
+    width: 500%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(-15deg);
+    animation: moveStripe 6s linear infinite;
+}
+
+/* Container principal */
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Logo */
+.logo-container {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.logo-container img {
+    max-width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centraliza a imagem */
+}
+
+/* Formulários */
+.form-container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 420px;
+    padding: 2rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.form-header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-header p {
+    color: #555;
+    font-size: 1rem;
+}
+
+/* Campos de entrada */
+.input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    position: absolute;
+    top: 10px;
+    left: 16px;
+    font-size: 1rem;
+    color: #555;
+    transition: all 0.3s ease;
+    pointer-events: none; /* Impede que o label atrapalhe a interação com o input */
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    outline: none;
+    background: #f7f7f7;
+    transition: border-color 0.3s ease;
+}
+
+.input-group-extra input {
+    width: 40%;
+    padding: 1px 1px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    outline: none;
+    background: #f7f7f7;
+    transition: border-color 0.3s ease;
+}
+.input-group-extra {
+    margin-bottom: 0.5rem; /* Adiciona espaço embaixo */
+}
+.input-group input:focus {
+    border-color: #4e6e89;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    top: -12px; /* Subir mais quando em foco ou preenchido */
+    left: 10px;
+    font-size: 0.9rem;
+    color: #4e6e89;
+}
+
+
+
+/* Recuperação de senha */
+.recover {
+    text-align: right;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.recover a {
+    color: #4e6e89;
+    text-decoration: none;
+}
+
+.recover a:hover {
+    color: #333;
+}
+
+/* Botões */
+.btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    background-color: #4e6e89;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #3bdda5;
+}
+
+.switch-btn {
+    background: transparent;
+    border: none;
+    color: #4e6e89;
+    font-size: 1rem;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.switch-btn:hover {
+    color: #333;
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 20px;
+    color: #555;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Ícones de redes sociais */
+.icons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.icons i {
+    color: #4e6e89;
+    padding: 10px;
+    border-radius: 50%;
+    margin: 0 10px;
+    font-size: 1.8rem;
+    border: 2px solid #dfe9f5;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.icons i:hover {
+    background-color: #4e6e89;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Animação para mostrar/esconder formulários */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

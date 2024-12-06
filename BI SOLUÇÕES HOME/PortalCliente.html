@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do Cliente - BI SOLUÇÕES</title>
+    <link rel="stylesheet" href="PortalCliente.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        function showReport() {
+            document.querySelector('.main-content').style.display = 'none';
+            document.querySelector('.iframe-container').style.display = 'block';
+        }
+
+        function goBackToPortal() {
+            document.querySelector('.main-content').style.display = 'flex';
+            document.querySelector('.iframe-container').style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+    <div class="portal-container">
+        <!-- Cabeçalho -->
+        <header class="header">
+            <div class="logo">BI SOLUÇÕES</div>
+            <nav class="header-menu">
+                <a href="#">Perfil</a>
+                <a href="#">Notificações</a>
+                <a href="#">Sair</a>
+            </nav>
+        </header>
+
+        <!-- Conteúdo Principal -->
+        <div class="main-content">
+            <!-- Barra Lateral -->
+            <aside class="sidebar">
+                <ul class="menu">
+                    <li><a href="#"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="#"><i class="fas fa-user"></i> Meu Perfil</a></li>
+                    <li><a href="#"><i class="fas fa-tasks"></i> Minhas Tarefas</a></li>
+                    <li><a href="#" onclick="showReport()"><i class="fas fa-file-alt"></i> Relatórios</a></li>
+                    <li><a href="#"><i class="fas fa-cogs"></i> Configurações</a></li>
+                </ul>
+            </aside>
+
+            <!-- Painel Central -->
+            <section class="content">
+                <h1>Bem-vindo ao Portal do Cliente</h1>
+                <p>Aqui você pode acessar todas as informações relacionadas aos nossos serviços.</p>
+
+                <div class="dashboard">
+                    <div class="card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Relatórios</h3>
+                        <p>Acesse os últimos relatórios e análises.</p>
+                        <button onclick="showReport()" class="view-report">Ver Relatórios</button>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-tasks"></i>
+                        <h3>Tarefas</h3>
+                        <p>Gerencie suas tarefas de forma eficiente.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Mensagens</h3>
+                        <p>Entre em contato diretamente com nossa equipe.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Container do Iframe -->
+        <div class="iframe-container">
+            <button class="back-button" onclick="goBackToPortal()">Voltar</button>
+        <iframe src="https://app.powerbi.com/reportEmbed?reportId=73988bf5-ee02-43ee-9eff-d1f109570071&autoAuth=true&ctid=6c60811c-739e-4044-a1d3-8c56a8a50c87" 
+                frameborder="0" 
+                allowfullscreen> </iframe>
+        </div>
+
+        <!-- Rodapé -->
+        <footer class="footer">
+            <p>&copy; 2024 BI SOLUÇÕES. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>

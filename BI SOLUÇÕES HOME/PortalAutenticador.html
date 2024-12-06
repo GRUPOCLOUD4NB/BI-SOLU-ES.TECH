@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="PortalAutenticador.css">
+    <script type="module" src="Auth.js"></script>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="logo-container">
+            <img src="https://github.com/GRUPOCLOUD4NB/IMAGENSBI/blob/main/LogoCabe%C3%A7alho_FundoBranco.png?raw=true-removebg-preview.png" alt="Logo">
+        </div>
+
+        <div class="form-container" id="signIn">
+            <form id="signInForm" method="post" action="">
+                <div class="input-group">
+                    <label for="email"></label>
+                    <input type="email" id="email" placeholder="E-mail" required autocomplete="email">
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" placeholder="Senha" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn" id="submitSignIn">Entrar</button>
+            </form>
+        </div>
+
+        <div id="signInMessage" style="display:none; color: red;"></div>
+        <footer>&copy; 2024 - Todos os direitos reservados.</footer>
+    </div>
+
+    <!-- Área do usuário (após login) -->
+    <div id="userArea" style="display: none;">
+        <h2>Bem-vindo ao Sistema!</h2>
+        <button id="logoutBtn">Logout</button>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBTaKdJDxa_z8i0isR0Eijp0PSRRfG6CAU",
+            authDomain: "bi-solucoes.firebaseapp.com",
+            projectId: "bi-solucoes",
+            storageBucket: "bi-solucoes.firebasestorage.app",
+            messagingSenderId: "761304787557",
+            appId: "1:761304787557:web:f4ff7f285ffb5792bab48c",
+            measurementId: "G-6DNLBKCWXB"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Defina a persistência aqui (pode ser local, session ou none)
+        setPersistence(auth, browserSessionPersistence)  // Usando session ao invés de local
+    .then(() => {
+        const signInButton = document.getElementById('submitSignIn');
+        signInButton.addEventListener('click', handleLogin);
+    })
+    .catch((error) => {
+        console.error("Erro ao definir persistência:", error);
+    });
+
+        // Função de login
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            if (!email || !password) {
+                showMessage('Por favor, preencha todos os campos.', 'signInMessage');
+                return;
+            }
+
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    localStorage.setItem('isAuthenticated', 'true');
+                    localStorage.setItem('loggedInUserId', user.uid); // Salva o ID do usuário no localStorage
+                    showMessage('Login realizado com sucesso!', 'signInMessage');
+
+                    // Redireciona ou mostra a área do usuário
+                    document.getElementById('signIn').style.display = 'none';
+                    document.getElementById('userArea').style.display = 'block';
+                })
+                .catch((error) => {
+                    showMessage(`Erro: ${error.message}`, 'signInMessage');
+                    console.error('Erro ao autenticar:', error);
+                });
+        }
+
+        // Função para exibir mensagens
+        function showMessage(message, divId) {
+            const messageDiv = document.getElementById(divId);
+            if (!messageDiv) {
+                console.error(`Elemento com ID '${divId}' não encontrado no DOM.`);
+                return;
+            }
+            messageDiv.style.display = "block";
+            messageDiv.innerHTML = message;
+            messageDiv.style.opacity = 1;
+
+            if (messageDiv.timeoutId) {
+                clearTimeout(messageDiv.timeoutId);
+            }
+            messageDiv.timeoutId = setTimeout(() => {
+                messageDiv.style.opacity = 0;
+                messageDiv.style.display = "none";
+            }, 7000); // Exibe a mensagem por 7 segundos
+        }
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            signOut(auth)
+                .then(() => {
+                    localStorage.removeItem('isAuthenticated');
+                    localStorage.removeItem('loggedInUserId');
+                    document.getElementById('signIn').style.display = 'block';
+                    document.getElementById('userArea').style.display = 'none';
+                    showMessage('Você foi desconectado!', 'signInMessage');
+                })
+                .catch((error) => {
+                    console.error('Erro ao fazer logout:', error);
+                });
+        });
+    </script>
+</body>
+</html>
